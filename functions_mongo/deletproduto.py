@@ -7,16 +7,16 @@ collection = db.estoques
 
 
 def deletar_produto():
+    from main import admMenu
     while True:
         produto_id = input("Digite o ID do produto a ser deletado (ou 'sair' para voltar ao menu): ")
+
+        item_a_deletar = {'idProduto':int(produto_id)}
+        deletar = collection.delete_one(item_a_deletar)
         
-        if produto_id.lower() == 'sair':
-            break
-        
-        result = collection.delete_one({'_id': produto_id})
-        
-        if result.deleted_count > 0:
-            print("Produto deletado com sucesso.")
+        if deletar.deleted_count > 0:
+            print("[✅ SUCESSO] Produto deletado com sucesso.")
+            admMenu()
         else:
-            print("Nenhum produto encontrado com o ID informado.")
-        print()
+            print("[❌ ERRO] Nenhum produto encontrado com o ID informado.")
+

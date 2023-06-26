@@ -19,6 +19,7 @@ def checarPorId():
 
 
 def listarPorId():
+    from main import admMenu
     while True:
         escolhaListar = input("[LISTA]: Deseja que a lista seja crescente ou decrescente?\n[C] Crescente\n[D] Decrescente\n")
         if escolhaListar == "C":
@@ -29,28 +30,56 @@ def listarPorId():
             for produto in produtos:
                  produto_formatado = f"idProduto: {produto['idProduto']}, " \
                        f"nomeProduto: {produto['nomeProduto']}, " \
-                       f"Quantidade: {produto['Quantidade']}, " \
+                       f"Quantidade: {produto['quantidade']}, " \
                        f"Preço: {produto['preco']}, " \
                        f"Fornecedor: {produto['fornecedor']}, " \
                        f"Data: {produto['data']}, " \
-                       f"Departamento: {produto['Departamento']}, " \
-                       f"Categoria: {produto['Categoria']}"
+                       f"Departamento: {produto['departamento']}, " \
+                       f"Categoria: {produto['categoria']}"
                  lista_ordem_crescente.append(produto_formatado)
+                 print(lista_ordem_crescente)
+
             return lista_ordem_crescente
+        
+        elif escolhaListar == "D":
+            produtos = collection.find().sort("idProduto", -1)
+          
+            lista_ordem_crescente = []
             
+            for produto in produtos:
+                 produto_formatado = f"idProduto: {produto['idProduto']}, " \
+                       f"nomeProduto: {produto['nomeProduto']}, " \
+                       f"Quantidade: {produto['quantidade']}, " \
+                       f"Preço: {produto['preco']}, " \
+                       f"Fornecedor: {produto['fornecedor']}, " \
+                       f"Data: {produto['data']}, " \
+                       f"Departamento: {produto['departamento']}, " \
+                       f"Categoria: {produto['categoria']}"
+                 lista_ordem_crescente.append(produto_formatado)
+                
+                 print(lista_ordem_crescente)
+                 admMenu()
+                 break
+        elif escolhaListar == "SAIR":
+            admMenu()
+            break         
         else: 
-            print("[❌ERRO]: A letra digitada está incorreta, insira um valor válido.")
+            print("[❌ERRO]: A letra digitada está incorreta, insira um valor válido. (SE DESEJA SAIR, DIGITE SAIR)")
             
  
 
 def checkStart():
+    from main import admMenu
     while True:
-        escolhaMain = input("[SISTEMA]: Como deseja checar os produtos?\n[I] Checar por ID\n[L] Listar em ordem crescente/decrescente\n(DIGITE A LETRA CORRESPONDENTE)\n")
+        escolhaMain = input("[SISTEMA]: Como deseja checar os produtos?\n[I] Checar por ID\n[L] Listar em ordem crescente/decrescente\n(DIGITE A LETRA CORRESPONDENTE)\n(DIGITE SAIR SE DESEJA SAIR DO CHECK)\n")
         if escolhaMain == "I":
             checarPorId()
             break
         elif escolhaMain == "L":
             listarPorId()
+            break
+        elif escolhaMain =="SAIR":
+            admMenu()
             break
         else:
          print("[❌ERRO]: A letra digitada está incorreta, insira um valor válido")
