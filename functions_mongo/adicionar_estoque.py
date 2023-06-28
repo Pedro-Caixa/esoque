@@ -4,9 +4,7 @@ import random
 
 
 uri = 'mongodb+srv://pedroschutz:JsEGKeiFr3OiZgEV@cluster0.hpalcoc.mongodb.net/'
-
 client = MongoClient(uri)
-
 db = client.estoque_db
 collection = db.estoques
 
@@ -20,7 +18,7 @@ def stockAddition():
         get_price = input("Insira o preço do produto: ")
         get_for = input("Insira o nome do fornecedor: ")
         get_dep = input("Insira o departamento do item (Uso e consumo, obsoletos, mercadoria para revenda,etc): ")
-        get_cat = input(" Insira a categoria do produto (roupas, acessórios, calçados, etc.)")
+        get_cat = input("Insira a categoria do produto (roupas, acessórios, calçados, etc.): ")
 
         random_id = random.randint(2, 99999)
 
@@ -40,3 +38,4 @@ def stockAddition():
         collection.insert_one(add_estoque)
         print("[✅ SUCESSO]: O produto", get_prod_name, "foi adicionado com sucesso.\n====================LOG DE INFORMAÇÕES====================\nNome do produto:", get_prod_name,"\nQuantidade:", get_quant_compra, "\nPreço: R$",get_price, "\nFornecedor:", get_for, "\n====================FIM DO LOG====================")
         admMenu()
+        break

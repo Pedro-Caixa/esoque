@@ -1,3 +1,4 @@
+import tkinter as tk
 from pymongo import MongoClient 
 from functions_mongo.adicionar_estoque import stockAddition
 from functions_mongo.checar_por_id import checkStart

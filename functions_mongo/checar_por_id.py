@@ -21,21 +21,15 @@ def checarPorId():
 def listarPorId():
     from main import admMenu
     while True:
-        escolhaListar = input("[LISTA]: Deseja que a lista seja crescente ou decrescente?\n[C] Crescente\n[D] Decrescente\n")
+        escolhaListar = input("[LISTA]: Deseja que a lista seja crescente ou decrescente?\n[C] Crescente\n[D] Decrescente\n[S] Sair")
         if escolhaListar == "C":
             produtos = collection.find().sort("idProduto", 1)
           
             lista_ordem_crescente = []
             
             for produto in produtos:
-                 produto_formatado = f"idProduto: {produto['idProduto']}, " \
-                       f"nomeProduto: {produto['nomeProduto']}, " \
-                       f"Quantidade: {produto['quantidade']}, " \
-                       f"Preço: {produto['preco']}, " \
-                       f"Fornecedor: {produto['fornecedor']}, " \
-                       f"Data: {produto['data']}, " \
-                       f"Departamento: {produto['departamento']}, " \
-                       f"Categoria: {produto['categoria']}"
+                 produto_formatado = f"ID: {produto['idProduto']}, Nome: {produto['nomeProduto']}, Quantidade: {produto['quantidade']}, Preço: {produto['preco']}, Fornecedor: {produto['fornecedor']}, Data: {produto['data']}, Departamento: {produto['departamento']}, Categoria: {produto['categoria']}"
+
                  lista_ordem_crescente.append(produto_formatado)
                  print(lista_ordem_crescente)
 
@@ -47,20 +41,13 @@ def listarPorId():
             lista_ordem_crescente = []
             
             for produto in produtos:
-                 produto_formatado = f"idProduto: {produto['idProduto']}, " \
-                       f"nomeProduto: {produto['nomeProduto']}, " \
-                       f"Quantidade: {produto['quantidade']}, " \
-                       f"Preço: {produto['preco']}, " \
-                       f"Fornecedor: {produto['fornecedor']}, " \
-                       f"Data: {produto['data']}, " \
-                       f"Departamento: {produto['departamento']}, " \
-                       f"Categoria: {produto['categoria']}"
+                 produto_formatado = f"ID: {produto['idProduto']}, Nome: {produto['nomeProduto']}, Quantidade: {produto['quantidade']}, Preço: {produto['preco']}, Fornecedor: {produto['fornecedor']}, Data: {produto['data']}, Departamento: {produto['departamento']}, Categoria: {produto['categoria']}"
                  lista_ordem_crescente.append(produto_formatado)
                 
                  print(lista_ordem_crescente)
                  admMenu()
                  break
-        elif escolhaListar == "SAIR":
+        elif escolhaListar == "S":
             admMenu()
             break         
         else: 
