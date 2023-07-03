@@ -12,7 +12,6 @@ client = MongoClient(uri)
 login_db = client.login_db
 login_collection = login_db.user_information
 
-
 def admMenu():
     janela_adm = ctk.CTkToplevel(root)
     janela_adm.title("ESTOQUE$ - Painel de Controle")
