@@ -1,11 +1,15 @@
 import customtkinter as ctk
 from CTkMessagebox import CTkMessagebox
 from pymongo import MongoClient
+import datetime
+import random
 
 uri = 'mongodb+srv://pedroschutz:JsEGKeiFr3OiZgEV@cluster0.hpalcoc.mongodb.net/'
 client = MongoClient(uri)
 db = client.estoque_db
 collection = db.estoques
+
+
 
 def checarPorId():
     janela_checar_id = ctk.CTkToplevel()
